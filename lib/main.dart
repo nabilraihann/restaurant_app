@@ -42,8 +42,7 @@ class RestaurantListPage extends StatelessWidget {
           return ListView.builder(
             itemCount: restaurants.length,
             itemBuilder: (context, index) {
-              return _buildRestaurantItem(
-                  context, restaurants[index] as RestaurantElement);
+              return _buildRestaurantItem(context, restaurants[index]);
             },
           );
         },
@@ -51,8 +50,7 @@ class RestaurantListPage extends StatelessWidget {
     );
   }
 
-  Widget _buildRestaurantItem(
-      BuildContext context, RestaurantElement restaurant) {
+  Widget _buildRestaurantItem(BuildContext context, Restaurant restaurant) {
     return ListTile(
       contentPadding:
           const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
