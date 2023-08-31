@@ -29,7 +29,7 @@ class RestaurantDetailPage extends StatelessWidget {
                 ),
               ),
               Padding(
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -47,20 +47,35 @@ class RestaurantDetailPage extends StatelessWidget {
                           const SizedBox(
                             height: 5,
                           ),
-                          Row(
-                            children: [
-                              const Icon(Icons.location_pin, size: 18),
-                              const SizedBox(width: 5),
-                              Text(restaurant.city),
-                              const SizedBox(width: 10),
-                              const Icon(
-                                Icons.star,
-                                size: 20,
-                                color: Colors.amberAccent,
+                          Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.lightBlue,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.location_pin, size: 18),
+                                  const SizedBox(width: 5),
+                                  Text(restaurant.city,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                      )),
+                                  const SizedBox(width: 10),
+                                  const Icon(
+                                    Icons.star,
+                                    size: 20,
+                                    color: Colors.amberAccent,
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Text(restaurant.rating.toString(),
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.w500))
+                                ],
                               ),
-                              const SizedBox(width: 5),
-                              Text(restaurant.rating.toString())
-                            ],
+                            ),
                           ),
                           const SizedBox(
                             height: 5,
@@ -93,7 +108,11 @@ class RestaurantDetailPage extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Menus:'),
+                            Text(
+                              'Menus:',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w600),
+                            ),
                             SizedBox(
                               height: 10,
                             ),

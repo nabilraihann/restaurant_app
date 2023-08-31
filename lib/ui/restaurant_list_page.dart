@@ -35,19 +35,50 @@ class RestaurantListPage extends StatelessWidget {
   }
 
   Widget _buildRestaurantItem(BuildContext context, Restaurant restaurant) {
-    return ListTile(
-      onTap: () {
-        Navigator.pushNamed(context, RestaurantDetailPage.routeName,
-            arguments: restaurant);
-      },
-      contentPadding:
-          const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      leading: Image.network(
-        restaurant.pictureId,
-        width: 100,
-        errorBuilder: (ctx, error, _) => const Center(child: Icon(Icons.error)),
+    return Padding(
+      padding: const EdgeInsets.only(top: 8, right: 12, left: 12),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        elevation: 3,
+        shadowColor: Colors.grey,
+        child: ListTile(
+          onTap: () {
+            Navigator.pushNamed(context, RestaurantDetailPage.routeName,
+                arguments: restaurant);
+          },
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 12.0, vertical: 5.0),
+          leading: ClipRRect(
+            borderRadius: BorderRadius.circular(3),
+            child: Image.network(
+              restaurant.pictureId,
+              height: 80,
+              errorBuilder: (ctx, error, _) =>
+                  const Center(child: Icon(Icons.error)),
+            ),
+          ),
+          title: Text(
+            restaurant.name,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          ),
+          subtitle: Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  restaurant.city,
+                  style: const TextStyle(fontWeight: FontWeight.w600),
+                ),
+                Text(restaurant.rating.toString(),
+                    style: const TextStyle(fontWeight: FontWeight.w600))
+              ],
+            ),
+          ),
+        ),
       ),
-      title: Text(restaurant.name),
     );
   }
 }
