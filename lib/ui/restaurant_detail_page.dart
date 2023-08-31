@@ -12,54 +12,60 @@ class RestaurantDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(restaurant.name),
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Image.network(restaurant.pictureId),
+              Padding(
+                padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(restaurant.pictureId),
+                    )
+                  ],
+                ),
+              ),
               Padding(
                   padding: EdgeInsets.all(15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              restaurant.name,
-                              style: const TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            restaurant.name,
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            children: [
+                              const Icon(Icons.location_pin, size: 18),
+                              const SizedBox(width: 5),
+                              Text(restaurant.city),
+                              const SizedBox(width: 10),
+                              const Icon(
+                                Icons.star,
+                                size: 20,
+                                color: Colors.amberAccent,
                               ),
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Row(
-                              children: [
-                                const Icon(Icons.location_pin, size: 20),
-                                Text(restaurant.city),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Row(
-                              children: [
-                                const Icon(
-                                  Icons.star,
-                                  color: Colors.amber,
-                                ),
-                                Text(restaurant.rating.toString()),
-                              ],
-                            ),
-                          ],
-                        ),
+                              const SizedBox(width: 5),
+                              Text(restaurant.rating.toString())
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                        ],
                       ),
                       const Divider(
                         color: Colors.grey,
