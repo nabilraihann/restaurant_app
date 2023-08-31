@@ -54,7 +54,7 @@ class RestaurantListPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(3),
             child: Image.network(
               restaurant.pictureId,
-              height: 80,
+              width: 80,
               errorBuilder: (ctx, error, _) =>
                   const Center(child: Icon(Icons.error)),
             ),

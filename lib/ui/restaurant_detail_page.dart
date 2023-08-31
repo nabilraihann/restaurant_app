@@ -17,7 +17,7 @@ class RestaurantDetailPage extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+                padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -98,43 +98,47 @@ class RestaurantDetailPage extends StatelessWidget {
                         overflow: TextOverflow.clip,
                         textAlign: TextAlign.justify,
                       ),
-                      Divider(
+                      const Divider(
                         color: Colors.blueGrey,
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Menus:',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w600),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Foods:'),
-                                Text(
-                                  restaurant.menus.foods
-                                      .map((foods) => foods.name)
-                                      .toString(),
-                                ),
-                                Text('Drinks:'),
-                                Text(
-                                  restaurant.menus.drinks
-                                      .map((drink) => drink.name)
-                                      .toString(),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Menus:',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text('Foods:',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400)),
+                              Text(
+                                restaurant.menus.foods
+                                    .map((foods) => foods.name)
+                                    .toString(),
+                              ),
+                              const Text('Drinks:',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400)),
+                              Text(
+                                restaurant.menus.drinks
+                                    .map((drink) => drink.name)
+                                    .toString(),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ],
                   ))
