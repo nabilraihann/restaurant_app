@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/ui/restaurant_detail_page.dart';
 
 import '../data/model/restaurant.dart';
 
@@ -35,6 +36,10 @@ class RestaurantListPage extends StatelessWidget {
 
   Widget _buildRestaurantItem(BuildContext context, Restaurant restaurant) {
     return ListTile(
+      onTap: () {
+        Navigator.pushNamed(context, RestaurantDetailPage.routeName,
+            arguments: restaurant);
+      },
       contentPadding:
           const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       leading: Image.network(
