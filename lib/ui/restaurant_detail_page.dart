@@ -119,24 +119,12 @@ class RestaurantDetailPage extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text('Foods:',
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400)),
-                              Text(
-                                restaurant.menus.foods
-                                    .map((foods) => foods.name)
-                                    .toString(),
-                              ),
                               const Text('Drinks:',
                                   style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400)),
-                              Text(
-                                restaurant.menus.drinks
-                                    .map((drink) => drink.name)
-                                    .toString(),
-                              ),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                              _buildDrinks(context),
                               const Padding(
                                 padding: EdgeInsets.only(top: 10),
                                 child: Text(
@@ -171,7 +159,43 @@ class RestaurantDetailPage extends StatelessWidget {
               .map(
                 (food) => Container(
                   margin: const EdgeInsets.only(
-                    right: 15,
+                    right: 10,
+                  ),
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: Colors.lightBlue,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        food.name.toString(),
+                        textAlign: TextAlign.start,
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+              .toList(),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDrinks(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 5),
+      width: MediaQuery.of(context).size.width,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: restaurant.menus.drinks
+              .map(
+                (food) => Container(
+                  margin: const EdgeInsets.only(
+                    right: 10,
                   ),
                   padding: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
