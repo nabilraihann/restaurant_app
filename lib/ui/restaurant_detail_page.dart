@@ -61,8 +61,8 @@ class RestaurantDetailPage extends StatelessWidget {
                                   const SizedBox(width: 5),
                                   Text(restaurant.city,
                                       style: const TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                      )),
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white)),
                                   const SizedBox(width: 10),
                                   const Icon(
                                     Icons.star,
@@ -72,7 +72,8 @@ class RestaurantDetailPage extends StatelessWidget {
                                   const SizedBox(width: 5),
                                   Text(restaurant.rating.toString(),
                                       style: const TextStyle(
-                                          fontWeight: FontWeight.w500))
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white))
                                 ],
                               ),
                             ),
@@ -136,6 +137,16 @@ class RestaurantDetailPage extends StatelessWidget {
                                     .map((drink) => drink.name)
                                     .toString(),
                               ),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 10),
+                                child: Text(
+                                  'Foods',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                              ),
+                              _buildFoods(context),
                             ],
                           ),
                         ],
@@ -144,6 +155,42 @@ class RestaurantDetailPage extends StatelessWidget {
                   ))
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFoods(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 5),
+      width: MediaQuery.of(context).size.width,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: restaurant.menus.foods
+              .map(
+                (food) => Container(
+                  margin: const EdgeInsets.only(
+                    right: 15,
+                  ),
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: Colors.lightBlue,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        food.name.toString(),
+                        textAlign: TextAlign.start,
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+              .toList(),
         ),
       ),
     );
